@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useCustomMutationQuery } from "@/app/customHooks/useCustomMutationQuery";
+import { useCustomMutationQuery } from "@/customHooks/useCustomMutationQuery";
 import { todoAPI } from "../lib/todoAPI";
 
 export default function TodoForm() {

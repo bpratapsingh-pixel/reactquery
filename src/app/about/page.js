@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useCustomQuery } from "../customHooks/useCustomQuery";
-import { todoAPI } from "../lib/todoAPI";
+import { useCustomQuery } from "../../customHooks/useCustomQuery";
+import { todoAPI } from "../../lib/todoAPI";
 
 
 export default function About() {

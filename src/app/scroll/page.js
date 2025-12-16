@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useEffect } from "react";
-import { useCustomInfiniteQuery } from "../customHooks/useCustomInfiniteQuery";
+import { useCustomInfiniteQuery } from "../../customHooks/useCustomInfiniteQuery";
 import Link from "next/link";
 
 export default function Projects() {

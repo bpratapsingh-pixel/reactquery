@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { useCustomQuery } from "../customHooks/useCustomQuery";
+import { useCustomPageQuery } from "../../customHooks/useCustomPageQuery";
 
 const PROJECTS_KEY = ["projects"];
 
@@ -32,16 +32,18 @@ export default function Todos() {
     isError,
     error,
     isFetching,
-    isPlaceholderData,
-  } = useCustomQuery({
+  } = useCustomPageQuery({
     page,
     queryKey: PROJECTS_KEY,
     queryFn: fetchProjects,
-    staleTime: 1000 * 60, // 1 min
+    staleTime: 1000 * 60,
     retry: 2,
     refetchOnWindowFocus: false,
     keepPreviousData: true,
   });
+
+  const projects = data?.projects ?? [];
+  const hasMore = data?.hasMore ?? false;
 
   return (
     <div className="max-w-2xl mx-auto p-6">
@@ -65,7 +67,7 @@ export default function Todos() {
         <p className="text-center text-red-600">Error: {error.message}</p>
       ) : (
         <div className="space-y-3">
-          {data.projects.map((project) => (
+          {projects.map((project) => (
             <div
               key={project.id}
               className="p-4 border rounded-xl shadow-sm bg-white"
@@ -83,7 +85,7 @@ export default function Todos() {
         Page: <span className="text-blue-600">{page}</span>
       </p>
 
-      {/* Pagination */}
+      {/* Pagination Controls */}
       <div className="flex justify-center gap-4 mt-6">
         <button
           onClick={() => setPage((p) => Math.max(p - 1, 1))}
@@ -95,11 +97,9 @@ export default function Todos() {
 
         <button
           onClick={() => {
-            if (!isPlaceholderData && data?.hasMore) {
-              setPage((p) => p + 1);
-            }
+            if (hasMore) setPage((p) => p + 1);
           }}
-          disabled={isPlaceholderData || !data?.hasMore}
+          disabled={!hasMore}
           className="px-4 py-2 bg-blue-600 text-white rounded-xl disabled:opacity-50"
         >
           Next ➡

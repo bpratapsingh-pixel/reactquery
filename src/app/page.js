@@ -1,6 +1,6 @@
 "use client";
-import TodoForm from "../app/components/TodoForm";
-import TodoList from "../app/components/TodoList";
+import TodoForm from "../components/TodoForm";
+import TodoList from "../components/TodoList";
 import Link from "next/link";
 
 export default function Home() {
@@ -38,6 +38,11 @@ export default function Home() {
         <Link href="/scroll">
           <button className="px-5 py-2 bg-purple-600 text-white rounded-lg hover:bg-yellow-700 transition">
             scroll
+          </button>
+        </Link>
+        <Link href="/feed">
+          <button className="px-5 py-2 bg-purple-600 text-white rounded-lg hover:bg-yellow-700 transition">
+            feed
           </button>
         </Link>
       </div>
