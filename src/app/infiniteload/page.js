@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { useCustomInfiniteQuery } from "../customHooks/useCustomInfiniteQuery";
+import { useCustomInfiniteQuery } from "../../customHooks/useCustomInfiniteQuery";
 
 export default function Projects() {
 const PROJECTS_KEY = ["projects"];

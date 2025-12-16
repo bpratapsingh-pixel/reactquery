@@ -1,5 +1,5 @@
 import "./globals.css";
-import ReactQueryProvider from "./providers/ReactQueryProvider";
+import ReactQueryProvider from "../providers/ReactQueryProvider";
 
 export const metadata = {
   title: "Todo App",
