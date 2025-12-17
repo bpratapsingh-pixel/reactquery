@@ -26,7 +26,7 @@ export default function GameCategoryTabs() {
   const scroll = (dir) => {
     if (!scrollRef.current) return;
 
-    const scrollAmount = 15 * 16; // 15rem in pixels (JS requirement)
+    const scrollAmount = 15 * 16;
 
     scrollRef.current.scrollBy({
       left: dir === "left" ? -scrollAmount : scrollAmount,
@@ -35,18 +35,21 @@ export default function GameCategoryTabs() {
   };
 
   return (
-    <section className="mt-1.5rem px-1.5rem">
-      <div className="relative bg-[#0C1F58] rounded-[0.9375rem] py-0.75rem px-3rem">
+    <section className="mt-6 px-4 sm:px-6">
+      <div className="relative bg-[#0C1F58] rounded-xl py-3 px-10">
 
-        {/* Left Arrow */}
+        {/* Left Arrow (desktop only) */}
         <button
           onClick={() => scroll("left")}
           aria-label="Scroll left"
-          className="absolute left-0.75rem top-1/2 -translate-y-1/2
-          w-[2.25rem] h-[2.25rem]
-          flex items-center justify-center
-          text-white text-[1.5rem] font-bold
-          hover:opacity-80 transition"
+          className="
+            hidden md:flex
+            absolute left-3 top-1/2 -translate-y-1/2
+            w-9 h-9
+            items-center justify-center
+            text-white text-2xl font-bold
+            hover:opacity-80 transition
+          "
         >
           ‹
         </button>
@@ -54,22 +57,29 @@ export default function GameCategoryTabs() {
         {/* Tabs */}
         <div
           ref={scrollRef}
-          className="flex gap-1rem overflow-x-auto scrollbar-hide scroll-smooth"
+          className="
+            flex gap-3
+            overflow-x-auto scrollbar-hide
+            scroll-smooth snap-x snap-mandatory
+          "
         >
           {tabs.map((tab, i) => (
             <TabItem key={i} {...tab} />
           ))}
         </div>
 
-        {/* Right Arrow */}
+        {/* Right Arrow (desktop only) */}
         <button
           onClick={() => scroll("right")}
           aria-label="Scroll right"
-          className="absolute right-0.75rem top-1/2 -translate-y-1/2
-          w-[2.25rem] h-[2.25rem]
-          flex items-center justify-center
-          text-white text-[1.5rem] font-bold
-          hover:opacity-80 transition"
+          className="
+            hidden md:flex
+            absolute right-3 top-1/2 -translate-y-1/2
+            w-9 h-9
+            items-center justify-center
+            text-white text-2xl font-bold
+            hover:opacity-80 transition
+          "
         >
           ›
         </button>
@@ -83,16 +93,23 @@ export default function GameCategoryTabs() {
 function TabItem({ icon, label }) {
   return (
     <div
-      className="shrink-0 flex items-center gap-0.5rem
-      px-1.25rem py-0.5rem rounded-[0.9375rem]
-      bg-gradient-to-r from-[#2E70DA] to-[#5A2CC2]
-      text-white text-[1rem] font-medium cursor-pointer
-      hover:brightness-110 transition"
+      className="
+        snap-start shrink-0
+        flex items-center gap-2
+        px-4 py-2
+        rounded-xl
+        bg-gradient-to-r from-[#2E70DA] to-[#5A2CC2]
+        text-white
+        text-sm sm:text-base
+        font-medium
+        cursor-pointer
+        hover:brightness-110 transition
+      "
     >
-      <div className="relative w-[1.6rem] aspect-[1/1]">
+      <div className="relative w-6 h-6">
         <Image src={icon} alt={label} fill className="object-contain" />
       </div>
-      {label}
+      <span className="whitespace-nowrap">{label}</span>
     </div>
   );
 }

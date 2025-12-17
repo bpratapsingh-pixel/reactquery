@@ -8,21 +8,21 @@ export default function HeroSection() {
     <section
       className="
         flex flex-col lg:flex-row
-        gap-[1.5rem]
-        px-[1.5rem]
-        mt-[2rem]
+        gap-4 lg:gap-6
+        px-4 sm:px-6
+        mt-6
         max-w-[90rem]
         mx-auto
       "
     >
-      {/* LEFT BANNER (image only) */}
+      {/* LEFT BANNER */}
       <div
         className="
           relative flex-1
-          rounded-[1rem]
+          rounded-xl
           overflow-hidden
-          min-h-[22rem]
-          lg:min-h-[28rem]
+          aspect-[16/9]
+          lg:aspect-[21/9]
         "
       >
         <Image
@@ -31,17 +31,18 @@ export default function HeroSection() {
           fill
           priority
           className="object-cover"
+          sizes="(max-width: 1024px) 100vw, 50vw"
         />
       </div>
 
-      {/* RIGHT BANNER (image + button only) */}
+      {/* RIGHT BANNER */}
       <div
         className="
           relative flex-1
-          rounded-[1rem]
+          rounded-xl
           overflow-hidden
-          min-h-[22rem]
-          lg:min-h-[28rem]
+          aspect-[16/9]
+          lg:aspect-[21/9]
         "
       >
         <Image
@@ -49,22 +50,25 @@ export default function HeroSection() {
           alt="Game Banner"
           fill
           className="object-cover"
+          sizes="(max-width: 1024px) 100vw, 50vw"
         />
 
         {/* Play Now Button */}
         <button
           className="
             absolute
-            left-[2.5rem]
-            bottom-[2.5rem]
-            w-[11.25rem]
-            h-[3.25rem]
+            left-4 bottom-4
+            sm:left-6 sm:bottom-6
+            lg:left-10 lg:bottom-10
+            w-[9.5rem] sm:w-[11.25rem]
+            h-[3rem] sm:h-[3.25rem]
             rounded-[0.9375rem]
             bg-gradient-to-br from-[#04145D] to-[#4D29A2]
-            text-white text-[1.125rem] font-bold
-            border-[0.0625rem] border-[#3C4360]
+            text-white text-[1rem] sm:text-[1.125rem]
+            font-bold
+            border border-[#3C4360]
             hover:brightness-110
-            active:scale-[0.95]
+            active:scale-95
             transition
           "
         >

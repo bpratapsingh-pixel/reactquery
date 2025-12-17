@@ -27,18 +27,19 @@ export default function SlotsSection() {
     <CustomCarousel
       title="Slots"
       icon={
-        <div className="relative w-[2.8rem] h-[2.8rem]">
+        <div className="relative w-[2.8rem] h-[2.8rem] shrink-0">
           <Image
             src={slotIcon}
             alt="Slots"
             fill
+            priority
             className="object-contain"
           />
         </div>
       }
     >
-      {games.map((img, i) => (
-        <GameCard key={i} img={img} />
+      {games.map((img, index) => (
+        <GameCard key={index} img={img} />
       ))}
     </CustomCarousel>
   );

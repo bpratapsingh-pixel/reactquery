@@ -15,7 +15,7 @@ import {
   vBlink,
   juwa777,
   riverSweep,
-  crownIcon, 
+  crownIcon,
 } from "@/assets/png";
 
 const games = [
@@ -38,12 +38,14 @@ export default function OriginalSection() {
     <CustomCarousel
       title="Original"
       icon={
-        <Image
-          src={crownIcon}
-          alt="Original"
-          fill
-          className="object-contain"
-        />
+        <div className="relative w-[2.5rem] h-[2.5rem]">
+          <Image
+            src={crownIcon}
+            alt="Original"
+            fill
+            className="object-contain"
+          />
+        </div>
       }
     >
       {games.map((img, i) => (

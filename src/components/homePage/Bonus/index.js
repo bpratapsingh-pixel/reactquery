@@ -15,7 +15,7 @@ export default function BonusSection() {
       {/* Header */}
       <div className="flex items-center justify-between mb-[1.5rem]">
         <div className="flex items-center gap-[0.75rem]">
-          <div className="relative w-[2.5rem] h-[2.5rem]">
+          <div className="relative w-[2.5rem] h-[2.5rem] shrink-0">
             <Image src={bonusIcon} alt="Bonus" fill className="object-contain" />
           </div>
           <h2 className="text-[#FFC522] text-[1.5rem] font-medium">
@@ -29,7 +29,8 @@ export default function BonusSection() {
             rounded-[0.75rem]
             border border-[#363C55]
             bg-[#0C1F58]
-            text-white
+            text-white text-[0.95rem]
+            hover:bg-[#142B70] transition
           "
         >
           See all
