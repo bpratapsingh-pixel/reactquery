@@ -1,0 +1,45 @@
+"use client";
+
+import Image from "next/image";
+import CustomCarousel from "@/ui/CustomCarousel";
+import GameCard from "@/ui/GameCard";
+import {
+  joker,
+  lucky,
+  panda,
+  bullets,
+  dragon,
+  moon,
+  slotIcon,
+} from "@/assets/png";
+
+const games = [
+  joker,
+  lucky,
+  panda,
+  bullets,
+  dragon,
+  moon,
+];
+
+export default function SlotsSection() {
+  return (
+    <CustomCarousel
+      title="Slots"
+      icon={
+        <div className="relative w-[2.8rem] h-[2.8rem]">
+          <Image
+            src={slotIcon}
+            alt="Slots"
+            fill
+            className="object-contain"
+          />
+        </div>
+      }
+    >
+      {games.map((img, i) => (
+        <GameCard key={i} img={img} />
+      ))}
+    </CustomCarousel>
+  );
+}
