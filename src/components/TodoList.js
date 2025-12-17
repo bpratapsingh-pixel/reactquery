@@ -5,7 +5,7 @@ import { useCustomQuery } from "../customHooks/useCustomQuery";
 import { todoAPI } from "../lib/todoAPI";
 import { useState } from "react";
 
-const TODO_KEY = ["todos"];
+const TODO_KEY = ["todos"]; 
 
 export default function TodoList() {
   const { data, isPending, isError, error } = useCustomQuery({
