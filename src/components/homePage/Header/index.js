@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import { Menu } from "lucide-react";
 import { buyIcon, redeemIcon } from "@/assets/png";
 
-export default function Header() {
+export default function Header({ onToggleSidebar }) {
   return (
     <header
       className="
@@ -14,6 +15,14 @@ export default function Header() {
         px-3 sm:px-6
       "
     >
+      {/* Mobile Toggle Button */}
+      <button
+        onClick={onToggleSidebar}
+        className="lg:hidden mr-4 text-white hover:text-[#FFC522] transition"
+      >
+        <Menu size={32} />
+      </button>
+
       {/* Left: Buy & Redeem */}
       <div className="flex items-center gap-2 sm:gap-4">
         <ActionButton icon={buyIcon} label="Buy" />

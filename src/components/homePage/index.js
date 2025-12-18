@@ -19,19 +19,22 @@ import Providers from "./Providers";
 import Footer from "./Footer";
 
 const Home = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = React.useState(false);
+
   return (
     <div className="flex min-h-screen bg-[#0C0630] overflow-x-hidden">
 
-      {/* Sidebar – desktop only */}
-      <aside className="hidden lg:block w-[340px] shrink-0">
-        <SidebarMenu />
-      </aside>
+      {/* Sidebar */}
+      <SidebarMenu
+        isOpen={isSidebarOpen}
+        onClose={() => setIsSidebarOpen(false)}
+      />
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col min-w-0">
 
         {/* Header */}
-        <Header />
+        <Header onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />
 
         {/* Page Body */}
         <div className="flex-1 px-3 sm:px-4 lg:px-6 space-y-8">

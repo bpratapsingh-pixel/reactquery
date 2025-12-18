@@ -53,8 +53,8 @@ export default function SidebarMenu({ isOpen, onClose }) {
         </button>
 
         {/* Logo */}
-        <div className="flex justify-center mb-6">
-          <div className="relative w-[13.75rem] aspect-[220/70]">
+        <div className="flex justify-start mb-6">
+          <div className="relative w-[18rem] aspect-[220/70]">
             <Image src={logo} alt="Logo" fill className="object-contain" />
           </div>
         </div>
@@ -77,9 +77,8 @@ export default function SidebarMenu({ isOpen, onClose }) {
             </div>
 
             <span
-              className={`transition-transform ${
-                open ? "rotate-180" : ""
-              }`}
+              className={`transition-transform ${open ? "rotate-180" : ""
+                }`}
             >
               ^
             </span>
