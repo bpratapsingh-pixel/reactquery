@@ -39,9 +39,9 @@ export default function Footer() {
               {[instagram, twitter, telegram, facebook].map((icon, i) => (
                 <button
                   key={i}
-                  className="w-10 h-10 rounded-full bg-[#1B2C6B]
+                  className="w-[clamp(2.25rem,4vw,2.5rem)] h-[clamp(2.25rem,4vw,2.5rem)] rounded-full bg-[#1B2C6B]
                   flex items-center justify-center
-                  hover:scale-110 transition"
+                  hover:scale-110 transition active:scale-95"
                 >
                   <Image src={icon} alt="social" width={20} height={20} />
                 </button>

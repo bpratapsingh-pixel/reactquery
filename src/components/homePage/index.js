@@ -22,7 +22,7 @@ const Home = () => {
   const [isSidebarOpen, setIsSidebarOpen] = React.useState(false);
 
   return (
-    <div className="flex min-h-screen bg-[#0C0630] overflow-x-hidden">
+    <div className="flex h-screen bg-[#0C0630] overflow-hidden">
 
       {/* Sidebar */}
       <SidebarMenu
@@ -31,7 +31,7 @@ const Home = () => {
       />
 
       {/* Main Content */}
-      <main className="flex-1 flex flex-col min-w-0">
+      <main className="flex-1 flex flex-col min-w-0 overflow-y-auto">
 
         {/* Header */}
         <Header onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />

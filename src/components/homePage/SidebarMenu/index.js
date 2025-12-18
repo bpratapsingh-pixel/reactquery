@@ -34,8 +34,8 @@ export default function SidebarMenu({ isOpen, onClose }) {
 
       <aside
         className={`
-          fixed lg:static top-0 left-0 z-50
-          h-full w-[21.25rem]
+          fixed lg:relative top-0 left-0 z-50
+          h-full w-[21.25rem] shrink-0
           bg-[#18083D] text-white
           overflow-y-auto
           px-4 py-6
@@ -60,7 +60,7 @@ export default function SidebarMenu({ isOpen, onClose }) {
         </div>
 
         {/* Top Cards */}
-        <div className="flex gap-4 mb-6">
+        <div className="flex gap-[clamp(0.5rem,2vw,1rem)] mb-6">
           <TopCard title="Wheel" img={spinwheel} />
           <TopCard title="Promotion" img={discount60} />
         </div>
@@ -113,11 +113,11 @@ export default function SidebarMenu({ isOpen, onClose }) {
 
 function TopCard({ title, img }) {
   return (
-    <div className="flex-1 bg-[#0C1F58] rounded-lg overflow-hidden">
+    <div className="flex-1 bg-[#0C1F58] rounded-lg overflow-hidden border border-white/10 hover:border-white/30 transition">
       <div className="relative aspect-[3/1]">
         <Image src={img} alt={title} fill className="object-cover" />
       </div>
-      <p className="text-center py-1 text-sm">{title}</p>
+      <p className="text-center py-1.5 text-[clamp(0.75rem,1.2vw,0.875rem)]">{title}</p>
     </div>
   );
 }
@@ -133,9 +133,24 @@ function MenuItem({ icon, label }) {
 
 function BottomButton({ icon, label }) {
   return (
-    <button className="w-full h-[3.125rem] bg-[#0C1F58] border-2 border-[#3C4360] rounded-lg flex items-center gap-4 px-4 text-[#E7B21D] font-semibold hover:bg-[#142B70]">
-      <Image src={icon} alt={label} width={22} height={22} />
-      {label}
+    <button className="
+      w-full 
+      h-[clamp(2.75rem,5vw,3.125rem)] 
+      bg-[#0C1F58] 
+      border-2 border-[#3C4360] 
+      rounded-lg 
+      flex items-center gap-[clamp(0.5rem,2vw,1rem)] 
+      px-[clamp(0.75rem,2vw,1.25rem)] 
+      text-[#E7B21D] 
+      text-[clamp(0.85rem,1.5vw,1rem)]
+      font-semibold 
+      hover:bg-[#142B70] 
+      transition-all
+    ">
+      <div className="relative w-[clamp(1.1rem,2vw,1.375rem)] aspect-square shrink-0">
+        <Image src={icon} alt={label} fill className="object-contain" />
+      </div>
+      <span className="truncate">{label}</span>
     </button>
   );
 }

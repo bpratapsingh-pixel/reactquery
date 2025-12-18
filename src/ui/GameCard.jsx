@@ -7,10 +7,10 @@ export default function GameCard({ img }) {
     <div
       className="
         relative shrink-0 snap-start
-        w-[11.5rem] h-[16rem]          /* mobile */
-        sm:w-[12.5rem] sm:h-[17.5rem]  /* tablet */
-        lg:w-[13.9rem] lg:h-[19.4rem]  /* desktop */
-        rounded-[0.75rem]
+        w-[30vw] sm:w-[22vw] md:w-[15vw] lg:w-[11.5vw] xl:w-[9.5vw] 2xl:w-[8.5vw]
+        max-w-[13.5rem]
+        aspect-[13.9/19.4]
+        rounded-[0.5rem] sm:rounded-[0.75rem]
         bg-gradient-to-b
         from-[#36278C] via-[#FFBD0B] to-[#1A3E7C]
         transition-transform duration-200
@@ -19,16 +19,16 @@ export default function GameCard({ img }) {
       "
     >
       {/* Inner card */}
-      <div className="absolute inset-[0.35rem] rounded-[0.6rem] bg-[#0C0630] overflow-hidden">
+      <div className="absolute inset-[0.2rem] sm:inset-[0.35rem] rounded-[0.4rem] sm:rounded-[0.6rem] bg-[#0C0630] overflow-hidden">
         <Image
           src={img}
           alt="game"
           fill
           className="object-cover"
           sizes="
-            (max-width: 640px) 45vw,
-            (max-width: 1024px) 25vw,
-            14rem
+            (max-width: 640px) 38vw,
+            (max-width: 1024px) 20vw,
+            13rem
           "
           priority={false}
         />

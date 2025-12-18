@@ -7,15 +7,15 @@ export default function SearchBar({ value, onChange }) {
     <div
       className="
         flex items-center gap-3
-        w-full sm:w-[17.125rem]
-        h-[3.25rem] sm:h-[3.75rem]
+        w-full sm:w-[clamp(15rem,25vw,17.125rem)]
+        h-[clamp(3.15rem,5vw,3.75rem)]
         bg-[#0C1F58]
         border-2 border-[#3C4360]
         rounded-xl
         px-4
         focus-within:border-[#5A2CC2]
         focus-within:ring-2 focus-within:ring-[#5A2CC2]/30
-        transition
+        transition-all
       "
     >
       {/* Search Icon */}

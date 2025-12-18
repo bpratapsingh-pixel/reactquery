@@ -59,7 +59,7 @@ function WinnerCard({ avatar, username, amount }) {
       "
     >
       {/* Avatar */}
-      <div className="relative w-14 h-14 sm:w-[5.5rem] sm:h-[5.5rem] rounded-lg bg-white overflow-hidden">
+      <div className="relative w-14 h-14 sm:w-[5.5rem] sm:h-[5.5rem] rounded-lg bg-white overflow-hidden shrink-0">
         <Image
           src={avatar}
           alt={username}
