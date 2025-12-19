@@ -2,130 +2,138 @@
 
 import Image from "next/image";
 import { coins, bgSmoke, logo, couple } from "@/assets/png";
+import UserForm from "./UserForm";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { SIGNIN, SIGNUP } from "./constant";
 
 export default function LoginPage() {
-  return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-[#0C0630] font-poppins">
+  const [isSignUp, setIsSignUp] = useState(true);
 
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+    reset
+  } = useForm({
+    defaultValues: {
+      username: "",
+      password: "",
+      email: "",
+    },
+  });
+
+  const onSubmit = (data) => {
+    alert(JSON.stringify(data, null, 2));
+    reset();
+  };
+
+  const toggleMode = () => {
+    setIsSignUp(!isSignUp);
+    reset();
+  };
+
+  return (
+    <div className="relative min-h-screen w-full overflow-hidden bg-[#0C0630] font-poppins text-white selection:bg-[#FFC522] selection:text-[#0C0630]">
       {/* Background smoke */}
       <Image
         src={bgSmoke}
         alt="smoke"
         fill
         priority
-        className="object-cover opacity-60"
+        className="object-cover opacity-40 sm:opacity-50 lg:opacity-60"
       />
 
-      {/* Coins (decorative, desktop only) */}
-      <div className="absolute bottom-0 right-0 hidden lg:block w-[40rem] h-[40rem] opacity-5">
-        <Image
-          src={coins}
-          alt="coins"
-          fill
-          className="object-contain"
-        />
+      {/* Decorative Coins (tablet/desktop only) */}
+      <div className="absolute bottom-0 right-0 hidden md:block w-[20rem] h-[20rem] lg:w-[35rem] lg:h-[35rem] xl:w-[45rem] xl:h-[45rem] opacity-5 pointer-events-none">
+        <Image src={coins} alt="coins" fill className="object-contain" />
       </div>
 
       {/* Main Wrapper */}
-      <div className="relative z-10 flex min-h-screen flex-col lg:flex-row">
+      <div className="relative z-10 flex min-h-screen flex-col lg:flex-row items-stretch">
 
         {/* Left Image Section (desktop only) */}
-        <div className="relative hidden lg:flex w-1/2 items-center justify-center">
-          <div className="relative w-[32rem] xl:w-[38rem] 2xl:w-[42rem] aspect-[2/3]">
+        <div className="relative hidden lg:flex w-full lg:w-1/2 items-center justify-center p-8">
+          <div className="relative w-full max-w-[28rem] xl:max-w-[34rem] 2xl:max-w-[40rem] aspect-[2/3] animate-float">
             <Image
               src={couple}
               alt="casino couple"
               fill
-              className="object-contain"
+              className="object-contain drop-shadow-[0_20px_50px_rgba(23,148,231,0.3)]"
             />
           </div>
         </div>
 
         {/* Right Login Section */}
-        <div className="flex w-full lg:w-1/2 items-center justify-center px-4 sm:px-6 md:px-10">
-          <div className="w-full max-w-md text-white">
+        <div className="flex w-full lg:w-1/2 flex-col items-center justify-center px-4 py-12 sm:px-8 md:px-12 lg:px-16 overflow-y-auto">
+          <div className="w-full max-w-[24rem] sm:max-w-[28rem] space-y-6 sm:space-y-8">
 
             {/* Logo */}
-            <div className="mb-6 flex justify-center lg:justify-start">
-              <Image
-                src={logo}
-                alt="RewardBlitz"
-                width={192}
-                height={80}
-                className="h-auto w-[10rem] sm:w-[12rem]"
-                priority
+            <div className="flex justify-center lg:justify-start">
+              <div className="relative w-[10rem] sm:w-[12rem] lg:w-[14rem] aspect-[220/80]">
+                <Image
+                  src={logo}
+                  alt="RewardBlitz"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+            </div>
+
+            {/* Form Container */}
+            <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-white/10 shadow-2xl">
+              {/* Heading */}
+              <div className="text-center lg:text-left mb-8">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight mb-2">
+                  {isSignUp ? "Create Account" : "Welcome Back"}
+                </h2>
+                <p className="text-white/60 text-sm sm:text-base">
+                  {isSignUp
+                    ? "Join RewardBlitz and start winning today!"
+                    : "Enter your credentials to access your account."}
+                </p>
+              </div>
+
+              {/* Divider */}
+              <div className="flex items-center gap-4 text-xs sm:text-sm uppercase tracking-widest text-white/40 mb-8">
+                <span className="h-px flex-1 bg-white/10" />
+                <span>{isSignUp ? "Sign Up" : "Sign In"}</span>
+                <span className="h-px flex-1 bg-white/10" />
+              </div>
+
+              {/* Form Component */}
+              <UserForm
+                controls={isSignUp ? SIGNUP : SIGNIN}
+                control={control}
+                handleSubmit={handleSubmit}
+                onSubmit={onSubmit}
+                isSignUp={isSignUp}
+                toggleMode={toggleMode}
+                errors={errors}
               />
             </div>
 
-            {/* Heading */}
-            <h2 className="mb-6 text-center text-2xl sm:text-3xl font-semibold">
-              Login
-            </h2>
-
-            {/* Divider */}
-            <div className="mb-6 flex items-center gap-3 text-sm">
-              <span className="h-px flex-1 bg-white/50" />
-              <span className="whitespace-nowrap font-medium">
-                Login with email
-              </span>
-              <span className="h-px flex-1 bg-white/50" />
-            </div>
-
-            {/* Form */}
-            <form className="space-y-5">
-
-              {/* Username */}
-              <div>
-                <label className="mb-2 block text-sm">User Name</label>
-                <input
-                  type="text"
-                  placeholder="User111"
-                  className="w-full rounded-xl bg-[#18083D] border border-[#FFC522] px-4 py-3 text-sm sm:text-base outline-none focus:ring-2 focus:ring-[#FFC522]"
-                />
-              </div>
-
-              {/* Password */}
-              <div>
-                <label className="mb-2 block text-sm font-roboto">
-                  Password
-                </label>
-                <div className="relative">
-                  <input
-                    type="password"
-                    placeholder="••••••••"
-                    className="w-full rounded-xl bg-[#0C1F58] border border-white/40 px-4 py-3 text-sm sm:text-base outline-none"
-                  />
-                  <span className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-white/60">
-                    👁
-                  </span>
-                </div>
-              </div>
-
-              {/* Forgot password */}
-              <p className="text-center text-sm underline cursor-pointer">
-                Forgot Your Password?
-              </p>
-
-              {/* Login Button */}
-              <button
-                type="submit"
-                className="w-full rounded-xl bg-gradient-to-r from-[#5A2CC2] to-[#1794E7] py-3 text-sm sm:text-base font-bold tracking-wide transition hover:opacity-90"
-              >
-                Login
-              </button>
-
-              {/* Sign up */}
-              <p className="text-center text-sm">
-                Don’t have an account?{" "}
-                <span className="cursor-pointer font-medium underline">
-                  Sign Up
-                </span>
-              </p>
-
-            </form>
+            {/* Support / Help (Optional) */}
+            <p className="text-center text-xs sm:text-sm text-white/40">
+              By continuing, you agree to our
+              <span className="underline cursor-pointer hover:text-white mx-1">Terms</span>
+              &
+              <span className="underline cursor-pointer hover:text-white mx-1">Privacy Policy</span>
+            </p>
           </div>
         </div>
       </div>
+
+      <style jsx global>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-20px); }
+        }
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
+        }
+      `}</style>
     </div>
   );
 }

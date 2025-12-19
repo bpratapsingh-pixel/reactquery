@@ -116,7 +116,7 @@ const live6 = "/assets/png/live6.png"
   const purchaseGift="/assets/png/purchaseGift.png"
   const referGift="/assets/png/referGift.png"
 
-
+  
 export {
   instagram,
   facebook,
