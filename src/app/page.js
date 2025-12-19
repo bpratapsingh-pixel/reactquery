@@ -1,7 +1,6 @@
 "use client";
-import TodoForm from "../components/TodoForm";
-import TodoList from "../components/TodoList";
 import Link from "next/link";
+
 
 export default function Home() {
   return (
@@ -10,20 +9,24 @@ export default function Home() {
         Home Page
       </h1>
 
-      {/* Todo Component */}
-      <div className="w-full max-w-lg bg-white shadow-md rounded-xl p-5 mb-8">
-        <TodoForm />
-        <TodoList/>
-      </div>
-
       {/* Navigation Buttons */}
       <div className="flex gap-4 mt-4">
-        <Link href="/about">
+        <Link href="/Home">
           <button className="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
-            About
+           Home
+          </button>
+        </Link>
+       <Link href="/loginSignUpPage">
+          <button className="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+           Login/Signup
           </button>
         </Link>
 
+        <Link href="/todo">
+          <button className="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+           Todo
+          </button>
+        </Link>
         <Link href="/infiniteload">
           <button className="px-5 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
             Infinite Load
