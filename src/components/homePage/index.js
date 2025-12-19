@@ -17,6 +17,7 @@ import TablesGame from "./TablesGame";
 import FishGames from "./FishGames";
 import Providers from "./Providers";
 import Footer from "./Footer";
+import BottomNav from "./BottomNav";
 
 const Home = () => {
   const [isSidebarOpen, setIsSidebarOpen] = React.useState(false);
@@ -37,7 +38,7 @@ const Home = () => {
         <Header onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />
 
         {/* Page Body */}
-        <div className="flex-1 px-3 sm:px-4 lg:px-6 space-y-8">
+        <div className="flex-1 px-3 sm:px-4 lg:px-6 space-y-8 pb-20 lg:pb-0">
 
           {/* Hero / Banner */}
           <Banner />
@@ -46,18 +47,12 @@ const Home = () => {
           <LiveWinner />
 
           {/* Game list + Search */}
-          <div
-            className="
-              flex flex-col gap-3
-              sm:flex-row sm:items-center
-              sm:gap-4
-            "
-          >
+          <div className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center">
             <div className="flex-1 min-w-0">
               <GameList />
             </div>
 
-            <div className="w-full sm:w-[280px]">
+            <div className="w-full sm:w-auto sm:shrink-0">
               <SearchBar />
             </div>
           </div>
@@ -77,6 +72,9 @@ const Home = () => {
         {/* Footer */}
         <Footer />
       </main>
+
+      {/* Bottom Navigation - Mobile Only */}
+      <BottomNav onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />
     </div>
   );
 };

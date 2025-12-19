@@ -13,11 +13,11 @@ export default function Footer() {
   return (
     <footer className="bg-gradient-to-b from-[#2A2166] via-[#1B164F] to-[#0A143D] mt-20">
       {/* CONTENT */}
-      <div className="max-w-[90rem] mx-auto px-6 lg:px-12 py-16">
+      <div className="max-w-[90rem] mx-auto px-6 lg:px-12 py-10">
 
-        {/* LOGO CENTER */}
-        <div className="flex justify-center mb-14">
-          <div className="relative w-[16rem] lg:w-[20rem] aspect-[5/2]">
+        {/* LOGO LEFT - Hidden on mobile */}
+        <div className="hidden lg:flex justify-start mb-8">
+          <div className="relative w-[12rem] aspect-[5/2]">
             <Image
               src={logo}
               alt="rewardblitz.fun"
@@ -29,7 +29,7 @@ export default function Footer() {
         </div>
 
         {/* GRID */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 text-sm text-[#E6E8F0]">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 text-sm text-[#E6E8F0]">
 
           {/* SOCIAL + CONTACT */}
           <div className="space-y-6">
