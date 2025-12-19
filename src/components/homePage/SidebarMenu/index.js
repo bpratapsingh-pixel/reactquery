@@ -35,10 +35,10 @@ export default function SidebarMenu({ isOpen, onClose }) {
       <aside
         className={`
           fixed lg:relative top-0 left-0 z-50
-          h-full w-[21.25rem] shrink-0
+          h-full w-[21.25rem] lg:w-[18rem] shrink-0
           bg-[#18083D] text-white
           overflow-y-auto
-          px-4 py-6
+          px-4 lg:px-3 py-6
           transition-transform duration-300
           ${isOpen ? "translate-x-0" : "-translate-x-full"}
           lg:translate-x-0
@@ -54,7 +54,7 @@ export default function SidebarMenu({ isOpen, onClose }) {
 
         {/* Logo */}
         <div className="flex justify-start mb-6">
-          <div className="relative w-[18rem] aspect-[220/70]">
+          <div className="relative w-[18rem] lg:w-[14.5rem] aspect-[220/70]">
             <Image src={logo} alt="Logo" fill className="object-contain" />
           </div>
         </div>

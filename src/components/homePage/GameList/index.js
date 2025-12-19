@@ -19,7 +19,7 @@ export default function GameCategoryTabs() {
   };
 
   return (
-    <section className="mt-6 px-4 sm:px-6">
+    <section>
       <div className="relative bg-[#0C1F58] rounded-xl py-3 px-10">
 
         {/* Left Arrow (desktop only) */}

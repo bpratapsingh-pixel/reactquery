@@ -13,8 +13,6 @@ import {
 import { buyIcon, redeemIcon, logo } from "@/assets/png";
 
 export default function Header({ onToggleSidebar }) {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
   return (
     <header
       className="
@@ -44,56 +42,17 @@ export default function Header({ onToggleSidebar }) {
 
       {/* 2. MOBILE VIEW (<lg) */}
       <div className="flex lg:hidden items-center justify-between w-full py-3 h-auto">
-        {/* Left: Menu Toggle */}
-        <div className="flex-1 flex justify-start">
-          <button
-            onClick={onToggleSidebar}
-            className="text-white hover:text-[#FFC522] transition"
-          >
-            <Menu size={24} />
-          </button>
-        </div>
-
-        {/* Center: Logo */}
-        <div className="flex-shrink-0">
-          <div className="relative w-[10rem] sm:w-[12rem] aspect-[220/70]">
+        {/* Left: Logo */}
+        <div className="flex items-center">
+          <div className="relative w-[8rem] sm:w-[10rem] aspect-[220/70]">
             <Image src={logo} alt="Logo" fill className="object-contain" priority />
           </div>
         </div>
 
-        {/* Right: Action Dropdown */}
-        <div className="flex-1 flex justify-end relative">
-          <button
-            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-            className="
-              flex items-center gap-1.5 
-              bg-[#0C1F58] border border-[#3C4360] 
-              px-3 py-1.5 rounded-full 
-              text-white text-[0.85rem] font-bold
-              transition active:scale-95
-            "
-          >
-            <User size={18} className="text-[#FFC522]" />
-            <ChevronDown size={14} className={`transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`} />
-          </button>
-
-          {/* Dropdown Menu */}
-          {isDropdownOpen && (
-            <>
-              {/* Overlay to close on click outside */}
-              <div
-                className="fixed inset-0 z-40"
-                onClick={() => setIsDropdownOpen(false)}
-              />
-              <div className="absolute top-full right-0 mt-2 w-44 bg-[#18083D] border border-[#3C4360] rounded-xl shadow-2xl z-50 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
-                <DropdownItem icon={<ShoppingBag size={18} />} label="Buy" />
-                <DropdownItem icon={<Gift size={18} />} label="Redeem" />
-                <div className="h-px bg-white/10 mx-2" />
-                <DropdownItem icon={<User size={18} />} label="Login" color="text-green-400" />
-                <DropdownItem icon={<LogOut size={18} />} label="Logout" color="text-red-400" />
-              </div>
-            </>
-          )}
+        {/* Right: Auth Buttons */}
+        <div className="flex items-center gap-2">
+          <AuthBtn label="Login" className="!h-9 !px-3 !text-xs !min-w-[4.5rem]" />
+          <AuthBtn label="Sign Up" variant="gradient" className="!h-9 !px-3 !text-xs !min-w-[4.5rem]" />
         </div>
       </div>
     </header>
