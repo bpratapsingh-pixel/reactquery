@@ -1,45 +1,18 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useBannerSlider } from "@/hooks/useBannerSlider";
 import { banner1, banner2 } from "@/assets/png";
 
 export default function HeroSection() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
-
   const banners = [
     { src: banner1, title: "Casino Banner", showButton: false },
     { src: banner2, title: "Game Banner", showButton: true },
   ];
 
-  const nextSlide = useCallback(() => {
-    setCurrentIndex((prev) => (prev + 1) % banners.length);
-  }, [banners.length]);
-
-  const prevSlide = useCallback(() => {
-    setCurrentIndex((prev) => (prev - 1 + banners.length) % banners.length);
-  }, [banners.length]);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 1024);
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-
-    // Auto-slide only on mobile
-    let timer;
-    if (window.innerWidth < 1024) {
-      timer = setInterval(nextSlide, 5000);
-    }
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      if (timer) clearInterval(timer);
-    };
-  }, [nextSlide]);
+  const { currentIndex, setCurrentIndex, nextSlide, prevSlide } =
+    useBannerSlider(banners.length);
 
   return (
     <section className="mt-6 px-4 sm:px-6 max-w-[90rem] mx-auto">

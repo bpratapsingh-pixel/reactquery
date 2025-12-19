@@ -2,23 +2,7 @@
 
 import Image from "next/image";
 import { useRef } from "react";
-import {
-  spinwheel2,
-  casinostar,
-  coupon,
-  casinotable,
-  fish,
-  gun,
-} from "@/assets/png";
-
-const tabs = [
-  { label: "Slots", icon: spinwheel2 },
-  { label: "Live Casino", icon: casinostar },
-  { label: "New Games", icon: coupon },
-  { label: "Table Games", icon: casinotable },
-  { label: "Fish Games", icon: fish },
-  { label: "Shooting", icon: gun },
-];
+import { tabs } from "./constant";
 
 export default function GameCategoryTabs() {
   const scrollRef = useRef(null);

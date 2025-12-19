@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { PROVIDER_CARD_COLORS } from "@/common/colors";
 
 export default function ProviderCard({ logo, active = false }) {
   return (
@@ -13,10 +14,9 @@ export default function ProviderCard({ logo, active = false }) {
         rounded-[0.9rem]
         flex items-center justify-center
         transition-all duration-200
-        ${
-          active
-            ? "bg-gradient-to-r from-[#1C4D95] to-[#37268B] shadow-[0_0_0.8rem_rgba(255,189,11,0.35)]"
-            : "bg-gradient-to-r from-[#38278B] to-[#155899]"
+        ${active
+          ? `${PROVIDER_CARD_COLORS.active} ${PROVIDER_CARD_COLORS.shadow}`
+          : PROVIDER_CARD_COLORS.inactive
         }
         hover:brightness-110
         active:scale-[0.97]
