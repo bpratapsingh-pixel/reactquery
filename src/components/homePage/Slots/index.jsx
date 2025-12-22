@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import CustomCarousel from "@/ui/CustomCarousel";
-import GameCard from "@/ui/GameCard";
+import CustomCarousel from "@/ui/CustomCarousel/CustomCarousel";
+import GameCard from "@/ui/GameCard/GameCard";
 import {
   joker,
   lucky,

@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import CustomCarousel from "@/ui/CustomCarousel";
-import BonusCard from "@/ui/BonusCard";
+import CustomCarousel from "@/ui/CustomCarousel/CustomCarousel";
+import BonusCard from "@/ui/BonusCard/BonusCard";
 import {
   bonusIcon,
   welcomeGift,

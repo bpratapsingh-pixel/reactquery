@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import CustomCarousel from "@/ui/CustomCarousel";
-import ProviderCard from "@/ui/ProviderCard";
+import CustomCarousel from "@/ui/CustomCarousel/CustomCarousel";
+import ProviderCard from "@/ui/ProviderCard/ProviderCard";
 import {
   smartSoft,
   netBet,

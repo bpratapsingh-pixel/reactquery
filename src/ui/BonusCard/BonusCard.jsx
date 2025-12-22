@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -7,9 +8,15 @@ export default function BonusCard({
   description,
   cta = "Claim Free Coins",
   image,
+  isFullWidth = false,
 }) {
   return (
-    <div className="relative shrink-0 snap-start w-[85vw] sm:w-[18rem] max-w-[18rem] h-[16rem]">
+    <div
+      className={`relative shrink-0 snap-start h-[16rem] ${isFullWidth
+          ? "w-full max-w-sm"
+          : "w-[85vw] sm:w-[18rem] max-w-[18rem]"
+        }`}
+    >
       {/* Glow */}
       <div className="absolute inset-0 rounded-[1rem] bg-cyan-400 blur-[0.6rem] opacity-30" />
 

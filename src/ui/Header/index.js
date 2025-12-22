@@ -11,8 +11,12 @@ import {
   ChevronDown
 } from "lucide-react";
 import { buyIcon, redeemIcon, logo } from "@/assets/png";
+import { useAuth } from "@/contexts/AuthContext";
+import Link from "next/link";
 
 export default function Header({ onToggleSidebar }) {
+  const { user, logout } = useAuth();
+
   return (
     <header
       className="
@@ -33,10 +37,20 @@ export default function Header({ onToggleSidebar }) {
           <ActionButton icon={redeemIcon} label="Redeem" />
         </div>
 
-        {/* Right: Auth Buttons */}
+        {/* Right: Auth Buttons or User Profile */}
         <div className="flex items-center gap-3">
-          <AuthBtn label="Login" />
-          <AuthBtn label="Sign Up" variant="gradient" />
+          {user ? (
+            <UserProfile user={user} logout={logout} />
+          ) : (
+            <>
+              <Link href="/loginSignUpPage">
+                <AuthBtn label="Login" />
+              </Link>
+              <Link href="/loginSignUpPage">
+                <AuthBtn label="Sign Up" variant="gradient" />
+              </Link>
+            </>
+          )}
         </div>
       </div>
 
@@ -51,12 +65,52 @@ export default function Header({ onToggleSidebar }) {
 
         {/* Right: Auth Buttons */}
         <div className="flex items-center gap-2">
-          <AuthBtn label="Login" className="!h-9 !px-3 !text-xs !min-w-[4.5rem]" />
-          <AuthBtn label="Sign Up" variant="gradient" className="!h-9 !px-3 !text-xs !min-w-[4.5rem]" />
+          {user ? (
+            <UserProfile user={user} logout={logout} isMobile />
+          ) : (
+            <>
+              <Link href="/loginSignUpPage">
+                <AuthBtn label="Login" className="!h-9 !px-3 !text-xs !min-w-[4.5rem]" />
+              </Link>
+              <Link href="/loginSignUpPage">
+                <AuthBtn label="Sign Up" variant="gradient" className="!h-9 !px-3 !text-xs !min-w-[4.5rem]" />
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </header>
   );
+}
+
+function UserProfile({ user, logout, isMobile }) {
+  return (
+    <div className="relative group z-50">
+      <div className={`flex items-center gap-3 cursor-pointer ${isMobile ? '' : 'bg-[#0C1F58] px-4 py-2 rounded-xl border border-[#3C4360]'}`}>
+        <div className="relative w-9 h-9 rounded-full overflow-hidden border-2 border-[#1794E7]">
+          <Image src={user.avatar || "https://i.pravatar.cc/150"} alt="User" fill className="object-cover" />
+        </div>
+        {!isMobile && (
+          <div className="flex flex-col">
+            <span className="text-white text-sm font-bold leading-tight">{user.name}</span>
+            <span className="text-[#1794E7] text-xs font-medium">Level 5</span>
+          </div>
+        )}
+        {!isMobile && <ChevronDown size={16} className="text-gray-400 group-hover:rotate-180 transition-transform" />}
+      </div>
+
+      {/* Dropdown Menu (Visible on Hover) */}
+      <div className="absolute right-0 top-full mt-2 w-48 bg-[#18083D] border border-[#3C4360] rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-right overflow-hidden">
+        <div className="p-3 border-b border-[#3C4360]/50">
+          <span className="text-gray-400 text-xs uppercase tracking-wider font-semibold">Account</span>
+        </div>
+        <div onClick={logout} className="flex items-center gap-3 px-4 py-3 hover:bg-[#25125D] cursor-pointer text-red-400 hover:text-red-300 transition-colors">
+          <LogOut size={16} />
+          <span className="text-sm font-medium">Logout</span>
+        </div>
+      </div>
+    </div>
+  )
 }
 
 /* ---------- Sub Components ---------- */
