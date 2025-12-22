@@ -1,4 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500&display=swap');
+:root {
+  --font-poppins: 'Poppins', sans-serif;
+  --font-roboto: 'Roboto', sans-serif;
+}
 
 @import "tailwindcss";
 
@@ -8,18 +11,19 @@ html {
 
 /* Font utility classes */
 .font-poppins {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-poppins);
 }
 
 .font-roboto {
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--font-roboto);
 }
+
 /* globals.css */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-

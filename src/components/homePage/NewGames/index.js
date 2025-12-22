@@ -32,7 +32,6 @@ export default function NewGamesSection() {
             src={newGameIcon}
             alt="New Games"
             fill
-            priority
             className="object-contain"
           />
         </div>

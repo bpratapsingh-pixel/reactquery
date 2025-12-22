@@ -13,8 +13,8 @@ export default function BonusCard({
   return (
     <div
       className={`relative shrink-0 snap-start h-[16rem] ${isFullWidth
-          ? "w-full max-w-sm"
-          : "w-[85vw] sm:w-[18rem] max-w-[18rem]"
+        ? "w-full max-w-sm"
+        : "w-[85vw] sm:w-[18rem] max-w-[18rem]"
         }`}
     >
       {/* Glow */}
@@ -69,6 +69,7 @@ export default function BonusCard({
               alt={title}
               fill
               className="object-contain drop-shadow-xl"
+              sizes="96px"
             />
           </div>
         </div>

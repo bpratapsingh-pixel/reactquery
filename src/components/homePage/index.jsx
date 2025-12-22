@@ -1,18 +1,21 @@
 "use client";
 
-import React from "react";
+import React, { Suspense } from "react";
+import dynamic from "next/dynamic";
 import Banner from "./Banner";
 import LiveWinner from "./LiveWinner";
 import GameList from "./GameList";
 import SearchBar from "./SearchBar";
-import Original from "./Original";
-import Slots from "./Slots";
-import LiveCasino from "./Livecasino";
-import NewGames from "./NewGames";
-import Bonus from "./Bonus";
-import TablesGame from "./TablesGame";
-import FishGames from "./FishGames";
-import Providers from "./Providers";
+
+// Lazy load components below the fold
+const Original = dynamic(() => import("./Original"), { ssr: true });
+const Slots = dynamic(() => import("./Slots"), { ssr: true });
+const LiveCasino = dynamic(() => import("./Livecasino"), { ssr: true });
+const NewGames = dynamic(() => import("./NewGames"), { ssr: true });
+const Bonus = dynamic(() => import("./Bonus"), { ssr: true });
+const TablesGame = dynamic(() => import("./TablesGame"), { ssr: true });
+const FishGames = dynamic(() => import("./FishGames"), { ssr: true });
+const Providers = dynamic(() => import("./Providers"), { ssr: true });
 
 const Home = () => {
   return (

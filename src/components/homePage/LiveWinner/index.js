@@ -65,6 +65,7 @@ function WinnerCard({ avatar, username, amount }) {
           alt={username}
           fill
           className="object-cover"
+          sizes="(max-width: 640px) 44px, 56px"
         />
       </div>
 

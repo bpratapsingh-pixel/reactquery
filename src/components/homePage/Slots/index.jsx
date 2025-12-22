@@ -32,7 +32,6 @@ export default function SlotsSection() {
             src={slotIcon}
             alt="Slots"
             fill
-            priority
             className="object-contain"
           />
         </div>

@@ -4,24 +4,8 @@ import React from "react";
 import Link from "next/link";
 import { useCustomPageQuery } from "../../hooks/customHooks/useCustomPageQuery";
 
-const PROJECTS_KEY = ["projects"];
-
-const fetchProjects = async (page) => {
-  const res = await fetch(
-    `https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=10`
-  );
-
-  if (!res.ok) {
-    throw new Error("API Error");
-  }
-
-  const data = await res.json();
-
-  return {
-    projects: data,
-    hasMore: data.length === 10,
-  };
-};
+import { projectsAPI } from "@/lib/projectsAPI";
+import { PROJECTS_KEY } from "../infiniteload/constant/constant";
 
 export default function PaginationPage() {
   const [page, setPage] = React.useState(1);
@@ -35,7 +19,7 @@ export default function PaginationPage() {
   } = useCustomPageQuery({
     page,
     queryKey: PROJECTS_KEY,
-    queryFn: fetchProjects,
+    queryFn: () => projectsAPI.fetchProjects(page),
     staleTime: 1000 * 60,
     retry: 2,
     refetchOnWindowFocus: false,

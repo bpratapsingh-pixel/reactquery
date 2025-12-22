@@ -91,7 +91,13 @@ function TabItem({ icon, label }) {
       "
     >
       <div className="relative w-6 h-6">
-        <Image src={icon} alt={label} fill className="object-contain" />
+        <Image
+          src={icon}
+          alt={label}
+          fill
+          className="object-contain"
+          sizes="24px"
+        />
       </div>
       <span className="whitespace-nowrap">{label}</span>
     </div>
