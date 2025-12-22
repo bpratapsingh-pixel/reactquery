@@ -48,32 +48,33 @@ function WinnerCard({ avatar, username, amount }) {
   return (
     <div
       className="
-        min-w-[13rem] sm:min-w-[14.25rem]
-        h-[5.75rem] sm:h-[6.35rem]
+        min-w-[11rem] sm:min-w-[12.5rem]
+        h-[4.5rem] sm:h-[5rem]
         rounded-xl
         bg-gradient-to-r from-[#4A99E2] to-[#6B4CCE]
-        flex items-center gap-3
-        p-3
+        flex items-center gap-2.5
+        p-2.5
         shrink-0
         snap-start
       "
     >
       {/* Avatar */}
-      <div className="relative w-14 h-14 sm:w-[5.5rem] sm:h-[5.5rem] rounded-lg bg-white overflow-hidden shrink-0">
+      <div className="relative w-11 h-11 sm:w-14 sm:h-14 rounded-lg bg-white overflow-hidden shrink-0">
         <Image
           src={avatar}
           alt={username}
           fill
           className="object-cover"
+          sizes="(max-width: 640px) 44px, 56px"
         />
       </div>
 
       {/* Info */}
       <div className="flex flex-col justify-center min-w-0">
-        <span className="text-[#FFEE00] text-base sm:text-lg font-semibold truncate">
+        <span className="text-[#FFEE00] text-sm sm:text-base font-semibold truncate">
           {username}
         </span>
-        <span className="text-white text-base sm:text-lg font-semibold">
+        <span className="text-white text-sm sm:text-base font-semibold">
           SC {amount}
         </span>
       </div>

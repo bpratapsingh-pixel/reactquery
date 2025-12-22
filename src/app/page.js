@@ -1,53 +1,46 @@
 "use client";
 import Link from "next/link";
 
-
 export default function Home() {
+  const routes = [
+    { label: "Home", path: "/Home", color: "bg-blue-600" },
+    { label: "Promotions", path: "/promotionPage", color: "bg-indigo-600" },
+    { label: "Todo App", path: "/todo", color: "bg-teal-600" },
+    { label: "Infinite Load", path: "/infiniteload", color: "bg-green-600" },
+    { label: "Pagination", path: "/pagination", color: "bg-purple-600" },
+    { label: "Infinite Scroll", path: "/scroll", color: "bg-orange-600" },
+    { label: "AI Feed", path: "/feed", color: "bg-pink-600" },
+  ];
+
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-6">
-      <h1 className="text-3xl font-bold text-gray-800 mb-6">
-        Home Page
-      </h1>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-6 font-poppins">
+      <div className="max-w-4xl w-full text-center">
+        <h1 className="text-4xl md:text-5xl font-extrabold text-[#0C1F58] mb-4">
+          Welcome Back
+        </h1>
+        <p className="text-gray-500 mb-10 text-lg">
+          Select a module to explore
+        </p>
 
-      {/* Navigation Buttons */}
-      <div className="flex gap-4 mt-4">
-        <Link href="/Home">
-          <button className="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
-           Home
-          </button>
-        </Link>
-       <Link href="/loginPage">
-          <button className="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
-           Login
-          </button>
-        </Link>
-
-        <Link href="/todo">
-          <button className="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
-           Todo
-          </button>
-        </Link>
-        <Link href="/infiniteload">
-          <button className="px-5 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
-            Infinite Load
-          </button>
-        </Link>
-
-        <Link href="/pagination">
-          <button className="px-5 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">
-            Pagination
-          </button>
-        </Link>
-        <Link href="/scroll">
-          <button className="px-5 py-2 bg-purple-600 text-white rounded-lg hover:bg-yellow-700 transition">
-            scroll
-          </button>
-        </Link>
-        <Link href="/feed">
-          <button className="px-5 py-2 bg-purple-600 text-white rounded-lg hover:bg-yellow-700 transition">
-            feed
-          </button>
-        </Link>
+        {/* Responsive Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {routes.map((route, index) => (
+            <Link key={index} href={route.path} className="group">
+              <div
+                className={`
+                  h-32 flex items-center justify-center 
+                  rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 
+                  transition-all duration-300 cursor-pointer
+                  ${route.color} text-white
+                `}
+              >
+                <span className="text-lg font-bold tracking-wide">
+                  {route.label}
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );

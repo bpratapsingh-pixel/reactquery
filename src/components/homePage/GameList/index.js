@@ -2,23 +2,7 @@
 
 import Image from "next/image";
 import { useRef } from "react";
-import {
-  spinwheel2,
-  casinostar,
-  coupon,
-  casinotable,
-  fish,
-  gun,
-} from "@/assets/png";
-
-const tabs = [
-  { label: "Slots", icon: spinwheel2 },
-  { label: "Live Casino", icon: casinostar },
-  { label: "New Games", icon: coupon },
-  { label: "Table Games", icon: casinotable },
-  { label: "Fish Games", icon: fish },
-  { label: "Shooting", icon: gun },
-];
+import { tabs } from "./constant";
 
 export default function GameCategoryTabs() {
   const scrollRef = useRef(null);
@@ -35,7 +19,7 @@ export default function GameCategoryTabs() {
   };
 
   return (
-    <section className="mt-6 px-4 sm:px-6">
+    <section>
       <div className="relative bg-[#0C1F58] rounded-xl py-3 px-10">
 
         {/* Left Arrow (desktop only) */}
@@ -107,7 +91,13 @@ function TabItem({ icon, label }) {
       "
     >
       <div className="relative w-6 h-6">
-        <Image src={icon} alt={label} fill className="object-contain" />
+        <Image
+          src={icon}
+          alt={label}
+          fill
+          className="object-contain"
+          sizes="24px"
+        />
       </div>
       <span className="whitespace-nowrap">{label}</span>
     </div>

@@ -1,26 +1,34 @@
-"use client";
+import { QueryClient, HydrationBoundary, dehydrate } from '@tanstack/react-query';
+import { todoAPI } from "@/lib/todoAPI";
+import { TODO_KEY } from "@/components/todo/constant/constant";
+import TodoList from "@/components/todo/TodoList";
+import Link from 'next/link';
+import React from 'react';
 
-import TodoList from "@/components/TodoList";
+export default async function ViewTodoPage() {
+    const queryClient = new QueryClient();
 
-export default function About() {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 px-4">
-      {/* Card */}
-      <div className="w-full max-w-2xl bg-white/80 backdrop-blur-xl shadow-xl rounded-2xl border border-gray-200 p-6">
-        
-        {/* Header */}
-        <div className="mb-6 text-center">
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 text-transparent bg-clip-text">
-            About Todos
-          </h1>
-          <p className="text-gray-500 mt-1 text-sm">
-            Manage and review your tasks effortlessly
-          </p>
+    await queryClient.prefetchQuery({
+        queryKey: TODO_KEY,
+        queryFn: todoAPI.getTodos,
+    });
+
+    return (
+        <div className="min-h-screen p-8 bg-gray-50 font-poppins">
+            <div className="max-w-2xl mx-auto">
+                <div className="mb-6">
+                    <Link href="/todo" className="text-blue-600 hover:underline font-medium flex items-center gap-1">
+                        ← Back to Add Task
+                    </Link>
+                </div>
+
+                <div className="bg-white rounded-3xl shadow-xl shadow-gray-100 p-8 border border-gray-100">
+                    <h1 className="text-3xl font-extrabold mb-6 text-[#0C1F58]">My Tasks</h1>
+                    <HydrationBoundary state={dehydrate(queryClient)}>
+                        <TodoList />
+                    </HydrationBoundary>
+                </div>
+            </div>
         </div>
-
-        {/* Todo List */}
-        <TodoList />
-      </div>
-    </div>
-  );
+    );
 }
